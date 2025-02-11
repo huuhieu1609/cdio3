@@ -23,6 +23,17 @@ const routes = [
         path : '/admin/viec-lam',
         component: ()=>import('../components/admin/ql_vieclam/index.vue')
     },
+    //khách hàng 
+    {
+        path : '/admin/dang-ky',
+        component: ()=>import('../components/Khach_hang/dang-ky/index.vue'),
+        meta:{layout: 'blank'},
+    },
+    {
+        path : '/admin/dang-nhap',
+        component: ()=>import('../components/Khach_hang/dang-nhap/index.vue'),
+        meta:{layout: 'blank'},
+    },
 ]
 
 const router = createRouter({

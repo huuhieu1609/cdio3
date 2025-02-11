@@ -165,7 +165,7 @@
                         </select>
                     </div>
                     <div class="col-lg-2 ps-0" style="max-width: 231px">
-                        <select class="form-select" aria-label="Default select example">
+                        <select class="form-select" aria-label="Default select example" style="height: 45px">
                             <option selected>Kinh Nghiệm Làm Việc</option>
                             <option value="1">Không Yêu Cầu Kinh Nghiệm</option>
                             <option value="2">Chưa Có Kih Nghiệm</option>

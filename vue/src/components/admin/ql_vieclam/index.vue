@@ -4,17 +4,17 @@
             <div class="col-lg-4">
                 <div class="card">
                     <div class="card-header">
-                        <h5 class="mt-2 text-primary"><b>Tạo Bảng Việc Làm</b></h5>
+                        <h5 class="mt-2"><b>Tạo Bảng Việc Làm</b></h5>
                     </div>
                     <div class="card-body">
                         <label class="mb-0">Họ Và Tên</label>
-                        <input v-model="add_congviec.ho_va_ten" type="text" class="form-control">
+                        <input v-model="bang.ho_va_ten" type="text" class="form-control">
                         <label class="mb-0 mt-2">Công Ty</label>
-                        <input v-model="add_congviec.cong_ty" type="text" class="form-control">
+                        <input v-model="bang.cong_ty" type="text" class="form-control">
                         <label class="mb-0 mt-2">Công Việc</label>
-                        <select v-model="add_congviec.cong_viec" class="form-select" aria-label="Default select example"
+                        <select v-model="bang.cong_viec" class="form-select" aria-label="Default select example"
                             style="height: 45px;">
-                            <option value="" disabled hidden>Chọn Công Việc</option>
+                            <option selected>Chọn Công Việc</option>
                             <option value="1">An Ninh/Bảo Vệ</option>
                             <option value="2">An Toàn Lao Động</option>
                             <option value="3">Bán Hàng/Kinh Doanh</option>
@@ -32,9 +32,9 @@
                             <option value="15">Y Tế/Chăm Sóc Sức Khỏe</option>
                         </select>
                         <label class="mb-0 mt-2">Mức Lương</label>
-                        <select v-model="add_congviec.muc_luong" class="form-select" aria-label="Default select example"
+                        <select v-model="bang.muc_luong" class="form-select" aria-label="Default select example"
                             style="height: 45px;">
-                            <option value="" disabled hidden>Chọn Mức Lương</option>
+                            <option selected>Chọn Mức Lương</option>
                             <option value="1">3.000.000 đ</option>
                             <option value="2">5.000.000 đ</option>
                             <option value="3">7.000.000 đ</option>
@@ -48,9 +48,9 @@
                             <option value="11">70.000.000 đ</option>
                         </select>
                         <label class="mb-0 mt-2">Địa Điểm</label>
-                        <select v-model="add_congviec.dia_diem" class="form-select" aria-label="Default select example"
+                        <select v-model="bang.dia_diem" class="form-select" aria-label="Default select example"
                             style="height: 45px;">
-                            <option value="" disabled hidden>Chọn Địa Điểm</option>
+                            <option selected>Chọn Địa Điểm</option>
                             <option value="1">Hà Giang</option>
                             <option value="2">Cao Bằng</option>
                             <option value="3">Bắc Kạn</option>
@@ -114,13 +114,13 @@
                             <option value="61">Cà Mau</option>
                         </select>
                         <label class="mb-0 mt-2">Ngày Tạo</label>
-                        <input v-model="add_congviec.ngay_tao" type="date" class="form-control">
+                        <input v-model="bang.ngay_tao" type="text" class="form-control" readonly>
                         <label class="mb-0 mt-2">Hạn Nộp</label>
-                        <input v-model="add_congviec.han_nop" type="date" class="form-control">
+                        <input v-model="bang.han_nop" type="date" class="form-control">
                         <label class="mb-0 mt-2">Kinh Nghiệm</label>
-                        <select v-model="add_congviec.kinh_nghiem" class="form-select"
-                            aria-label="Default select example" style="height: 45px;">
-                            <option value="" disabled hidden>Chọn Kinh Nghiệm</option>
+                        <select v-model="bang.kinh_nghiem" class="form-select" aria-label="Default select example"
+                            style="height: 45px;">
+                            <option selected>Chọn Kinh Nghiệm</option>
                             <option value="1">Không Yêu Cầu Kinh Nghiệm</option>
                             <option value="2">Chưa Có Kih Nghiệm</option>
                             <option value="3">Đến Dưới 1 Năm</option>
@@ -130,9 +130,9 @@
                             <option value="7">Từ 11 Năm</option>
                         </select>
                         <label class="mb-0 mt-2">Cấp Bậc</label>
-                        <select v-model="add_congviec.cap_bac" class="form-select" aria-label="Default select example"
+                        <select v-model="bang.cap_bac" class="form-select" aria-label="Default select example"
                             style="height: 45px;">
-                            <option value="" disabled hidden>Chọn Cấp Bậc</option>
+                            <option selected>Chọn Cấp Bậc</option>
                             <option value="1">Sinh viên/ Thực tập sinh</option>
                             <option value="2">Mới tốt nghiệp</option>
                             <option value="3">Nhân viên</option>
@@ -150,11 +150,11 @@
             <div class="col-lg-8">
                 <div class="card">
                     <div class="card-header">
-                        <h5 class="mt-2 text-primary"><b>Danh Sách Việc Làm</b></h5>
+                        <h5 class="mt-2"><b>Danh Sách Việc Làm</b></h5>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table table-bordered table-hover ">
+                            <table class="table table-bordered table-hover">
                                 <thead>
                                     <tr class="text-nowrap text-center align-middle">
                                         <th>#</th>
@@ -171,7 +171,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <template v-for="(value, index) in bang" :key="index">
+                                    <template v-for="(value, index) in list_job" :key="index">
                                         <tr class="text-nowrap align-middle">
                                             <td>{{ index + 1 }}</td>
                                             <td>{{ value.ho_va_ten }}</td>
@@ -290,209 +290,12 @@
                                                 <p v-if="value.cap_bac == 7">Điều Hành Cấp Cao</p>
                                             </td>
                                             <td>
-                                                <button v-on:click="Object.assign(edit_vieclam, value)"
-                                                    class="btn btn-primary me-2 text-nowrap" data-bs-toggle="modal"
-                                                    data-bs-target="#capnhat">Cập Nhật</button>
-                                                <button v-on:click="Object.assign(del_vieclam, value)"
-                                                    class="btn btn-danger text-nowrap" data-bs-toggle="modal"
-                                                    data-bs-target="#xoa">Xoá</button>
+                                                <button class="btn btn-primary me-2">Cập Nhật</button>
+                                                <button class="btn btn-danger">Xoá</button>
                                             </td>
                                         </tr>
                                     </template>
                                 </tbody>
-                                <!-- modal Cập Nhật -->
-                                <div class="modal fade" id="capnhat" tabindex="-1" aria-labelledby="exampleModalLabel"
-                                    aria-hidden="true">
-                                    <div class="modal-dialog modal-xl">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                    aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <div class="row">
-                                                    <div class="col-lg-6">
-                                                        <label class="mb-0">Họ Và Tên</label>
-                                                        <input v-model="edit_vieclam.ho_va_ten" type="text"
-                                                            class="form-control">
-                                                        <label class="mb-0 mt-2">Công Ty</label>
-                                                        <input v-model="edit_vieclam.cong_ty" type="text"
-                                                            class="form-control">
-                                                        <label class="mb-0 mt-2">Công Việc</label>
-                                                        <select v-model="edit_vieclam.cong_viec" class="form-select"
-                                                            aria-label="Default select example" style="height: 45px;">
-                                                            <option selected>Chọn Công Việc</option>
-                                                            <option value="1">An Ninh/Bảo Vệ</option>
-                                                            <option value="2">An Toàn Lao Động</option>
-                                                            <option value="3">Bán Hàng/Kinh Doanh</option>
-                                                            <option value="4">Bán Lẻ/Bán Sỉ</option>
-                                                            <option value="5">Bảo Hiểm</option>
-                                                            <option value="6">Công Nghệ Thông Tin</option>
-                                                            <option value="7">Giáo Dục/Đào Tạo</option>
-                                                            <option value="8">Kế Toán/Kiểm Toán</option>
-                                                            <option value="9">Kiến Trúc/Thiết Kế</option>
-                                                            <option value="10">Marketing/Truyền Thông</option>
-                                                            <option value="11">Ngân Hàng/Tài Chính</option>
-                                                            <option value="12">Nhân Sự</option>
-                                                            <option value="13">Sản Xuất/Cơ Khí</option>
-                                                            <option value="14">Vận Tải/Kho Vận</option>
-                                                            <option value="15">Y Tế/Chăm Sóc Sức Khỏe</option>
-                                                        </select>
-                                                        <label class="mb-0 mt-2">Mức Lương</label>
-                                                        <select v-model="edit_vieclam.muc_luong" class="form-select"
-                                                            aria-label="Default select example" style="height: 45px;">
-                                                            <option selected>Chọn Mức Lương</option>
-                                                            <option value="1">3.000.000 đ</option>
-                                                            <option value="2">5.000.000 đ</option>
-                                                            <option value="3">7.000.000 đ</option>
-                                                            <option value="4">10.000.000 đ</option>
-                                                            <option value="5">15.000.000 đ</option>
-                                                            <option value="6">20.000.000 đ</option>
-                                                            <option value="7">30.000.000 đ</option>
-                                                            <option value="8">40.000.000 đ</option>
-                                                            <option value="9">50.000.000 đ</option>
-                                                            <option value="10">60.000.000 đ</option>
-                                                            <option value="11">70.000.000 đ</option>
-                                                        </select>
-                                                        <label class="mb-0 mt-2">Địa Điểm</label>
-                                                        <select v-model="edit_vieclam.dia_diem" class="form-select"
-                                                            aria-label="Default select example" style="height: 45px;">
-                                                            <option selected>Chọn Địa Điểm</option>
-                                                            <option value="1">Hà Giang</option>
-                                                            <option value="2">Cao Bằng</option>
-                                                            <option value="3">Bắc Kạn</option>
-                                                            <option value="4">Tuyên Quang</option>
-                                                            <option value="5">Lào Cai</option>
-                                                            <option value="6">Yên Bái</option>
-                                                            <option value="7">Thái Nguyên</option>
-                                                            <option value="8">Lạng Sơn</option>
-                                                            <option value="9">Phú Thọ</option>
-                                                            <option value="10">Bắc Giang</option>
-                                                            <option value="11">Quảng Ninh</option>
-                                                            <option value="12">Hà Nội</option>
-                                                            <option value="13">Vĩnh Phúc</option>
-                                                            <option value="14">Bắc Ninh</option>
-                                                            <option value="15">Hải Dương</option>
-                                                            <option value="16">Hưng Yên</option>
-                                                            <option value="17">Hà Nam</option>
-                                                            <option value="18">Nam Định</option>
-                                                            <option value="19">Thái Bình</option>
-                                                            <option value="20">Hải Phòng</option>
-                                                            <option value="21">Hòa Bình</option>
-                                                            <option value="22">Sơn La</option>
-                                                            <option value="23">Điện Biên</option>
-                                                            <option value="24">Lai Châu</option>
-                                                            <option value="25">Thanh Hóa</option>
-                                                            <option value="26">Nghệ An</option>
-                                                            <option value="27">Hà Tĩnh</option>
-                                                            <option value="28">Quảng Bình</option>
-                                                            <option value="29">Quảng Trị</option>
-                                                            <option value="30">Thừa Thiên Huế</option>
-                                                            <option value="31">Đà Nẵng</option>
-                                                            <option value="32">Quảng Nam</option>
-                                                            <option value="33">Quảng Ngãi</option>
-                                                            <option value="34">Bình Định</option>
-                                                            <option value="35">Phú Yên</option>
-                                                            <option value="36">Khánh Hòa</option>
-                                                            <option value="37">Ninh Thuận</option>
-                                                            <option value="38">Bình Thuận</option>
-                                                            <option value="39">Kon Tum</option>
-                                                            <option value="40">Gia Lai</option>
-                                                            <option value="41">Đắk Lắk</option>
-                                                            <option value="42">Đắk Nông</option>
-                                                            <option value="43">Lâm Đồng</option>
-                                                            <option value="44">TP Hồ Chí Minh</option>
-                                                            <option value="45">Bà Rịa - Vũng Tàu</option>
-                                                            <option value="46">Bình Dương</option>
-                                                            <option value="47">Bình Phước</option>
-                                                            <option value="48">Đồng Nai</option>
-                                                            <option value="49">Tây Ninh</option>
-                                                            <option value="50">Long An</option>
-                                                            <option value="51">Đồng Tháp</option>
-                                                            <option value="52">Tiền Giang</option>
-                                                            <option value="53">An Giang</option>
-                                                            <option value="54">Bến Tre</option>
-                                                            <option value="55">Vĩnh Long</option>
-                                                            <option value="56">Trà Vinh</option>
-                                                            <option value="57">Cần Thơ</option>
-                                                            <option value="58">Hậu Giang</option>
-                                                            <option value="59">Sóc Trăng</option>
-                                                            <option value="60">Bạc Liêu</option>
-                                                            <option value="61">Cà Mau</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="col-lg-6">
-                                                        <label class="mb-0">Ngày Tạo</label>
-                                                        <input v-model="edit_vieclam.ngay_tao" type="date"
-                                                            class="form-control">
-                                                        <label class="mb-0 mt-2">Hạn Nộp</label>
-                                                        <input v-model="edit_vieclam.han_nop" type="date"
-                                                            class="form-control">
-                                                        <label class="mb-0 mt-2">Kinh Nghiệm</label>
-                                                        <select v-model="edit_vieclam.kinh_nghiem" class="form-select"
-                                                            aria-label="Default select example" style="height: 45px;">
-                                                            <option selected>Chọn Kinh Nghiệm</option>
-                                                            <option value="1">Không Yêu Cầu Kinh Nghiệm</option>
-                                                            <option value="2">Chưa Có Kih Nghiệm</option>
-                                                            <option value="3">Đến Dưới 1 Năm</option>
-                                                            <option value="4">Từ 1 - 4 Năm</option>
-                                                            <option value="5">Từ 5 - 7 Năm</option>
-                                                            <option value="6">Từ 7 - 10 Năm</option>
-                                                            <option value="7">Từ 11 Năm</option>
-                                                        </select>
-                                                        <label class="mb-0 mt-2">Cấp Bậc</label>
-                                                        <select v-model="edit_vieclam.cap_bac" class="form-select"
-                                                            aria-label="Default select example" style="height: 45px;">
-                                                            <option selected>Chọn Cấp Bậc</option>
-                                                            <option value="1">Sinh viên/ Thực tập sinh</option>
-                                                            <option value="2">Mới tốt nghiệp</option>
-                                                            <option value="3">Nhân viên</option>
-                                                            <option value="4">Trưởng nhóm/Giám sát</option>
-                                                            <option value="5">Quản Lý</option>
-                                                            <option value="6">Quản Lý Cấp Cao</option>
-                                                            <option value="7">Điều Hành Cấp Cao</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary"
-                                                    data-bs-dismiss="modal">Quay Lại</button>
-                                                <button v-on:click="editvieclam()" type="button" class="btn btn-primary"
-                                                    data-bs-dismiss="modal">Cập
-                                                    Nhật</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- end modal Cập Nhật -->
-                                <!-- modal Xoá -->
-                                <div class="modal fade" id="xoa" tabindex="-1" aria-labelledby="exampleModalLabel"
-                                    aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                    aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <div class="alert alert-danger" role="alert">
-                                                    Bạn có muốn xoá <b>{{ del_vieclam.cong_ty }}</b>
-                                                    này không?
-                                                </div>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary"
-                                                    data-bs-dismiss="modal">Quay Lại</button>
-                                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal"
-                                                    v-on:click="deletevieclam()">Xoá</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- end modal Xoá -->
                             </table>
                         </div>
                     </div>
@@ -506,9 +309,24 @@ import axios from 'axios';
 
 export default {
     data() {
+        const currentDate = new Date();
+        const day = String(currentDate.getDate()).padStart(2, '0');
+        const month = String(currentDate.getMonth() + 1).padStart(2, '0');
+        const year = currentDate.getFullYear();
         return {
-            bang: [],
-            add_congviec: {
+            list_job: [],
+            bang: {
+                ho_va_ten: '',
+                cong_ty: '',
+                cong_viec: '',
+                muc_luong: '',
+                dia_diem: '',
+                ngay_tao: `${year}/${month}/${day}`,
+                han_nop: '',
+                kinh_nghiem: '',
+                cap_bac: '',
+            },
+            edit: {
                 ho_va_ten: '',
                 cong_ty: '',
                 cong_viec: '',
@@ -519,18 +337,7 @@ export default {
                 kinh_nghiem: '',
                 cap_bac: '',
             },
-            edit_vieclam: {
-                ho_va_ten: '',
-                cong_ty: '',
-                cong_viec: '',
-                muc_luong: '',
-                dia_diem: '',
-                ngay_tao: '',
-                han_nop: '',
-                kinh_nghiem: '',
-                cap_bac: '',
-            },
-            del_vieclam: {
+            delete_vieclam: {
                 ho_va_ten: '',
                 cong_ty: '',
                 cong_viec: '',
@@ -550,9 +357,9 @@ export default {
     methods: {
         laydata() {
             axios
-                .get('http://127.0.0.1:8000/api/vieclam')
+                .get('http://127.0.0.1:8000/api/viec-lam')
                 .then(res => {
-                    this.bang = res.data.data;
+                    this.list_job = res.data.data;
                 })
                 .catch(error => {
                     console.log(error);
@@ -560,7 +367,7 @@ export default {
         },
         addvieclam() {
             axios
-                .post("http://127.0.0.1:8000/api/add-vieclam", this.add_congviec)
+                .post("http://127.0.0.1:8000/api/add-viec-lam", this.bang)
                 .then((response) => {
                     if (response.data.status == true) {
                         // alert(response.data.message);
@@ -586,7 +393,7 @@ export default {
         },
         editvieclam() {
             axios
-                .post("http://127.0.0.1:8000/api/edit-vieclam", this.edit_vieclam)
+                .post("http://127.0.0.1:8000/api/edit-viec-lam", this.edit)
                 .then((response) => {
                     if (response.data.status == true) {
                         // alert(response.data.message);
@@ -612,7 +419,7 @@ export default {
         },
         deletevieclam() {
             axios
-                .post("http://127.0.0.1:8000/api/delete-vieclam", this.del_vieclam)
+                .post("http://127.0.0.1:8000/api/delete-viec-lam", this.delete_vieclam)
                 .then((response) => {
                     if (response.data.status == true) {
                         // alert(response.data.message);
